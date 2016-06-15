@@ -8,7 +8,7 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: 'partials/PostComicController.html',
+      templateUrl: 'partials/postComicStrip.html',
       controller: 'PostComicController'
     })
     .otherwise('/');
