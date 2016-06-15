@@ -1,0 +1,22 @@
+{
+  "name": "lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app\\app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiozzo/CandH_client.git"
+  },
+  "author": "Martin Cross",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiozzo/CandH_client/issues"
+  },
+  "homepage": "https://github.com/chiozzo/CandH_client#readme",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}

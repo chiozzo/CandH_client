@@ -1,0 +1,20 @@
+{
+  "name": "lib",
+  "description": "",
+  "main": "app\\app.js",
+  "authors": [
+    "Martin Cross"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "jquery": "1.9.1 - 2"
+  }
+}
