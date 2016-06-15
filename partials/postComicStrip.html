@@ -1,0 +1,26 @@
+<div class="postComicStripForm">
+  <input type="hidden" name="comicStripId" value="comicStrip.comicStripId">
+  <div>
+    <label for="name">Comic Strip Name</label>
+    <input type="text" name="name" ng-model="comicStrip.name">
+  </div>
+
+  <div>
+    <label for="printDate">Original Print Date</label>
+    <input type="date" name="printDate" ng-model="comicStrip.printDate">
+  </div>
+
+  <div>
+    <label for="transcript">Transcipt</label>
+    <input type="textarea" name="transcript" ng-model="comicStrip.transcript">
+  </div>
+
+  <div>
+    <label for="image">Image Upload</label>
+    <input type="file" name="image" ng-model="comicStrip.image">
+  </div>
+
+  <div>
+    <button type="button" name="submitComic" ng-click="postComic()">Submit</button>
+  </div>
+</div>
