@@ -18,8 +18,12 @@
   </div>
 
   <div>
-    <label for="image"></label>
-    <input type="file" name="image" ng-model="comicStrip.image">
+    <label for="image">Upload the Comic</label>
+    <input type="file" name="image" on-file-change="loadFile"/>
+  </div>
+
+  <div>
+    <img src="" id="imagePreview" alt="image preview">
   </div>
 
   <div>
