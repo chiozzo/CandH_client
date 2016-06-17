@@ -17,7 +17,26 @@ app.controller('EditComicController', [
         $scope.comicToEdit.imageResult = result;
         $scope.comicToEdit.imageEncoded = window.btoa(result);
       }
+      console.log(file);
       reader.readAsDataURL(file);
+    };
+
+    $scope.putComic = function() {
+      let putURL = `http://localhost:5000/api/ComicStrip/${$scope.comicToEdit.ComicStripId}`;
+      $http({
+        url: putURL,
+        method: 'PUT',
+        data: JSON.stringify({
+          "ComicStripId": $scope.comicToEdit.ComicStripId,
+          "Transcript": $scope.comicToEdit.Transcript,
+          "OriginalPrintDate": $scope.comicToEdit.OriginalPrintDate,
+          "Image": $scope.comicToEdit.imageEncoded
+        })
+      })
+      .then(
+        editedComic => console.log('Modified', editedComic),
+        error => console.log(error)
+      );
     };
 
 }]);
