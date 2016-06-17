@@ -10,12 +10,11 @@ app.controller('PostComicController', [
     $scope.loadFile = function() {
       let file = event.target.files[0];
       let fileName = file.name.split('.')[0];
-      // next line in prep for using part of file name for comic name
-      // let comicStripName = fileName.split('_')[1];
       let reader = new FileReader();
       reader.onload = function() {
         let result = reader.result;
         document.getElementById('imagePreview').src = result;
+        // Not sure why this previous line is required. The next line should achieve the same result thanks to two-way data binding.
         $scope.comicStrip.imageResult = result;
         $scope.comicStrip.imageEncoded = window.btoa(result);
       }
@@ -27,10 +26,8 @@ app.controller('PostComicController', [
         url: 'http://localhost:5000/api/ComicStrip',
         method: 'POST',
         data: JSON.stringify({
-          // do I want the comic strip name to be the filename?
-          "Name": $scope.comicStrip.name,
-          "OriginalPrintDate": $scope.comicStrip.originalPrintDate,
           "Transcript": $scope.comicStrip.transcript,
+          "OriginalPrintDate": $scope.comicStrip.originalPrintDate,
           "Image": $scope.comicStrip.imageEncoded
         })
       })

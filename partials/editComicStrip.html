@@ -4,12 +4,12 @@
     <label for="transcript">Transcipt</label>
     <!-- using Angular Directive for textarea
     https://docs.angularjs.org/api/ng/directive/textarea -->
-    <textarea name="transcript" rows="8" cols="40" ng-model="comicToEdit.transcript"></textarea>
+    <textarea name="transcript" rows="8" cols="40" ng-model="comicToEdit.Transcript"></textarea>
   </div>
 
   <div>
     <label for="printDate">Original Print Date</label>
-    <input type="date" name="printDate" ng-model="comicToEdit.originalPrintDate">
+    <input type="date" name="printDate" ng-model="comicToEdit.OriginalPrintDate">
   </div>
 
   <div>
@@ -18,10 +18,10 @@
   </div>
 
   <div>
-    <img src="" id="imagePreview" alt="image preview">
+    <img src={{comicToEdit.Image}} id="imagePreview" alt="image preview">
   </div>
 
   <div>
-    <button type="button" name="submitComic" ng-click="postComic()">Submit</button>
+    <button type="button" name="submitComic" ng-click="putComic()">Submit</button>
   </div>
 </div>
