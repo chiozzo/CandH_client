@@ -46,7 +46,7 @@ app.controller('ReadComicController', [
       }
       $scope.requestedComic.Id--;
       $scope.getComic();
-    }
+    };
 
     $scope.getComic();
   }
