@@ -3,7 +3,9 @@
 app.controller('ReadComicController', [
   '$http',
   '$scope',
-  function($http, $scope) {
+  '$location',
+  'ComicFactory',
+  function($http, $scope, $location, comicFactory) {
 
     $scope.comic = {};
 
@@ -25,6 +27,7 @@ app.controller('ReadComicController', [
           $scope.comic = gotComic;
           $scope.requestedComic.Id = gotComic.ComicStripId;
           $scope.comic.Image = window.atob(gotComic.Image);
+          comicFactory.setComic($scope.comic);
         },
         error => {
           console.log(error);
@@ -47,6 +50,10 @@ app.controller('ReadComicController', [
       $scope.requestedComic.Id--;
       $scope.getComic();
     };
+
+    $scope.editComic = function() {
+      $location.path('/editComic');
+    }
 
     $scope.getComic();
   }

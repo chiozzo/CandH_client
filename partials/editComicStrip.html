@@ -1,16 +1,15 @@
 <div class="postComicStripForm">
-  <input type="hidden" name="comicStripId" value="comicStrip.comicStripId"/>
 
   <div>
     <label for="transcript">Transcipt</label>
     <!-- using Angular Directive for textarea
     https://docs.angularjs.org/api/ng/directive/textarea -->
-    <textarea name="transcript" rows="8" cols="40" ng-model="comicStrip.transcript"></textarea>
+    <textarea name="transcript" rows="8" cols="40" ng-model="comicToEdit.transcript"></textarea>
   </div>
 
   <div>
     <label for="printDate">Original Print Date</label>
-    <input type="date" name="printDate" ng-model="comicStrip.originalPrintDate">
+    <input type="date" name="printDate" ng-model="comicToEdit.originalPrintDate">
   </div>
 
   <div>
