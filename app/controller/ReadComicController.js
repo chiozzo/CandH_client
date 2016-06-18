@@ -10,15 +10,14 @@ app.controller('ReadComicController', [
     $scope.comic = {};
 
     $scope.requestedComic = {
-      "Id": 0,
+      "Id": null,
       "getURL": 'http://localhost:5000/api/ComicStrip'
     };
 
     $scope.getComic = function() {
-      if ($scope.requestedComic.Id != 0) {
+      if ($scope.requestedComic.Id != null) {
         $scope.requestedComic.getURL = `http://localhost:5000/api/ComicStrip?comicStripId=${$scope.requestedComic.Id}`
       }
-      console.log($scope.requestedComic.getURL);
       $http
       .get($scope.requestedComic.getURL)
       .then(
@@ -36,7 +35,7 @@ app.controller('ReadComicController', [
     };
 
     $scope.getNextComic = function() {
-      if ($scope.requestedComic.Id == 0) {
+      if ($scope.requestedComic.Id == null) {
         $scope.requestedComic.Id = 1;
       }
       $scope.requestedComic.Id++;
@@ -53,6 +52,10 @@ app.controller('ReadComicController', [
 
     $scope.editComic = function() {
       $location.path('/editComic');
+    };
+
+    $scope.formatTranscript = function(transcript) {
+      // split on new line character and insert </p><p>
     }
 
     $scope.getComic();
