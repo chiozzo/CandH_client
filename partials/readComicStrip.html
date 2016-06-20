@@ -7,6 +7,8 @@
     {{comic.OriginalPrintDate | date}}
   </p>
 
+  <tags-input ng-model="comic.emotionTags" ng-keydown="tagEmotion($event)"></tags-input>
+
   <button type="button" name="editComic" ng-click="editComic()">Edit This Comic</button>
 
   <button type="button" name="nextComic" ng-click="getNextComic()">Get Next Comic</button>

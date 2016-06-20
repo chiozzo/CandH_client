@@ -54,6 +54,17 @@ app.controller('ReadComicController', [
       $location.path('/editComic');
     };
 
+    $scope.tagEmotion = function(event) {
+      if (event.keyCode == 13) {
+        console.log(event);
+        console.log("tag emotion run");
+        for (var index in $scope.comic.emotionTags) {
+          // put will go here
+          console.log($scope.comic.emotionTags[index].text);
+        }
+      }
+    };
+
     $scope.formatTranscript = function(transcript) {
       // split on new line character and insert </p><p>
     }

@@ -1,7 +1,8 @@
 "use strict";
 
 let app = angular.module('CandH', [
-  'ngRoute'
+  'ngRoute',
+  'ngTagsInput'
 ]);
 
 app.config(['$routeProvider',
