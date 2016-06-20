@@ -15,5 +15,9 @@ app.config(['$routeProvider',
       templateUrl: 'partials/postComicStrip.html',
       controller: 'PostComicController'
     })
+    .when('/editComic', {
+      templateUrl: 'partials/editComicStrip.html',
+      controller: 'EditComicController'
+    })
     .otherwise('/');
 }]);

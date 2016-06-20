@@ -1,11 +1,13 @@
 <div>
-  <img src={{comic.Image}} alt="comic image" />
+  <img class="comicStripImage" src={{comic.Image}} alt="comic image" />
   <p>
     {{comic.Transcript}}
   </p>
   <p>
     {{comic.OriginalPrintDate | date}}
   </p>
+
+  <button type="button" name="editComic" ng-click="editComic()">Edit This Comic</button>
 
   <button type="button" name="nextComic" ng-click="getNextComic()">Get Next Comic</button>
   <button type="button" name="previousComic" ng-click="getPreviousComic()">Get Previous Comic</button>
