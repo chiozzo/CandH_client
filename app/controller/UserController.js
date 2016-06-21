@@ -21,7 +21,7 @@ app.controller('UserController', [
       .then(
         success => {
           console.log(success);
-          // userFactory.setUser(success);
+          userFactory.setUser(success.data);
           $location.path('/');
         },
         error => {
