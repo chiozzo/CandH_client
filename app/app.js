@@ -20,5 +20,16 @@ app.config(['$routeProvider',
       templateUrl: 'partials/editComicStrip.html',
       controller: 'EditComicController'
     })
+    .when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: 'UserController'
+    })
     .otherwise('/');
+}]);
+
+app.run([
+  '$location',
+  'UserFactory'
+  function($location, userFactory) {
+    $location.path('/login');
 }]);
