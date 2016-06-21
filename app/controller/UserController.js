@@ -4,7 +4,7 @@ app.controller('UserController', [
   '$http',
   '$scope',
   '$location',
-  'UserFactory'
+  'UserFactory',
   function($http, $scope, $location, userFactory) {
 
     $scope.user = {
@@ -22,12 +22,12 @@ app.controller('UserController', [
         success => {
           console.log(success);
           // userFactory.setUser(success);
+          $location.path('/');
         },
         error => {
           console.log(error);
         }
-      )
+      );
 
-      $location.path('/');
     };
 }]);

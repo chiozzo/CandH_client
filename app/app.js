@@ -29,7 +29,7 @@ app.config(['$routeProvider',
 
 app.run([
   '$location',
-  'UserFactory'
+  'UserFactory',
   function($location, userFactory) {
     $location.path('/login');
 }]);
