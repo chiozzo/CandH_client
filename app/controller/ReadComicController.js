@@ -5,9 +5,12 @@ app.controller('ReadComicController', [
   '$scope',
   '$location',
   'ComicFactory',
-  function($http, $scope, $location, comicFactory) {
+  'UserFactory',
+  function($http, $scope, $location, comicFactory, userFactory) {
 
     $scope.searchString = null;
+
+    $scope.user = {};
 
     $scope.comic = {};
 
@@ -95,10 +98,39 @@ app.controller('ReadComicController', [
       }
     };
 
+    $scope.postComment = function() {
+      console.log('post comment run', $scope.comic.newComment);
+
+      $http({
+        url: 'http://localhost:5000/api/Comment',
+        method: 'POST',
+        data: JSON.stringify({
+          'ComicStripId': $scope.comic.ComicStripId,
+          'ComicUserId': userFactory.getUser().ComicUserId,
+          'Comment': $scope.comic.newComment
+        })
+      })
+      .then(
+        success => {
+          console.log(success);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+
+    };
+
     $scope.formatTranscript = function(transcript) {
       // split on new line character and insert </p><p>
-    }
+    };
+
+    $scope.getLoggedInUser = function() {
+
+      $scope.user.firstName = userFactory.getUser().Username.split(' ')[0];
+    };
 
     $scope.getComic();
+    $scope.getLoggedInUser();
   }
 ]);
