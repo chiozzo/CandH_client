@@ -7,25 +7,35 @@ app.controller('ReadComicController', [
   'ComicFactory',
   function($http, $scope, $location, comicFactory) {
 
+    $scope.searchString = null;
+
     $scope.comic = {};
 
-    $scope.requestedComic = {
-      "Id": null,
-      "getURL": 'http://localhost:5000/api/ComicStrip'
-    };
-
     $scope.getComic = function() {
-      if ($scope.requestedComic.Id != null) {
-        $scope.requestedComic.getURL = `http://localhost:5000/api/ComicStrip?comicStripId=${$scope.requestedComic.Id}`
+      if (comicFactory.getRequestedComic().Id != null) {
+        comicFactory.setGETURL(`http://localhost:5000/api/ComicStrip?comicStripId=${comicFactory.getRequestedComic().Id}`);
       }
+
+      if ($scope.searchString != null) {
+        comicFactory.setGETURL(`http://localhost:5000/api/ComicStrip?emotionSearchString=${$scope.searchString}`);
+      }
+
       $http
-      .get($scope.requestedComic.getURL)
+      .get(comicFactory.getRequestedComic().getURL)
       .then(
         success => {
           let gotComic = success.data[0];
+          // console.log(gotComic);
+          comicFactory.setRequestedComicID(gotComic.ComicStripId);
+          console.log(comicFactory.getRequestedComic().Id);
           $scope.comic = gotComic;
-          $scope.requestedComic.Id = gotComic.ComicStripId;
           $scope.comic.Image = window.atob(gotComic.Image);
+          let emotions = $scope.comic.Emotions;
+          let emotionTags = [];
+          for (var emotionIndex in emotions) {
+            emotionTags[emotionIndex] = emotions[emotionIndex].Emotion;
+          }
+          $scope.comic.emotionTags = emotionTags;
           comicFactory.setComic($scope.comic);
         },
         error => {
