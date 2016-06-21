@@ -24,7 +24,13 @@
   <button type="button" name="nextComic" ng-click="getNextComic()">Get Next Comic</button>
   <button type="button" name="previousComic" ng-click="getPreviousComic()">Get Previous Comic</button>
 
-  <label for="Comments"></label>
+  <label for="Comments">Comments</label>
+  <div ng-repeat="comment in comic.Comments">
+    <p>
+      {{comment.Reader.Username}}
+      {{comment.Comment}}
+    </p>
+  </div>
   <input type="textarea" name="newComment" placeholder="Add a Comment" ng-model="comic.newComment"/>
   <button type="button" name="postComment" ng-click="postComment()">Add Comment</button>
 </div>
