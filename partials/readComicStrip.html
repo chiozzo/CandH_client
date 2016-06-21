@@ -1,3 +1,9 @@
+<div class="searchField">
+  <label for="searchString">Enter Search Terms Here</label>
+  <input type="text" name="searchString" ng-model="searchString">
+  <button type="button" name="searchStringButton" ng-click="searchComic()">Search</button>
+</div>
+
 <div>
   <img class="comicStripImage" src={{comic.Image}} alt="comic image" />
   <p>
@@ -6,6 +12,8 @@
   <p>
     {{comic.OriginalPrintDate | date}}
   </p>
+
+  <tags-input ng-model="comic.emotionTags" ng-keydown="tagEmotion($event)"></tags-input>
 
   <button type="button" name="editComic" ng-click="editComic()">Edit This Comic</button>
 

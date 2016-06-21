@@ -3,7 +3,8 @@
 app.controller('PostComicController', [
   '$http',
   '$scope',
-  function($http, $scope) {
+  '$location',
+  function($http, $scope, $location) {
 
     $scope.comicStrip = {};
 
@@ -31,6 +32,15 @@ app.controller('PostComicController', [
           "Image": $scope.comicStrip.imageEncoded
         })
       })
-      .success(newComic => console.log(`201 Created`, newComic))
+      .then(
+        newComic => {
+          console.log(`201 Created`, newComic);
+          comicFactory.setRequestedComicID(newComic.ComicStripId);
+          $location.path('/');
+        },
+        error => {
+          console.log(error);
+        }
+      )
     };
 }]);
