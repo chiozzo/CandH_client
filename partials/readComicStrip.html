@@ -1,36 +1,48 @@
-<div class="userWelcome">
-  <h3>Hi {{user.firstName}}!</h3>
-</div>
-
-<div class="searchField">
-  <label for="searchString">Enter Search Terms Here</label>
-  <input type="text" name="searchString" ng-model="searchString">
-  <button type="button" name="searchStringButton" ng-click="searchComic()">Search</button>
-</div>
-
-<div>
-  <img class="comicStripImage" src={{comic.Image}} alt="comic image" />
-  <p>
-    {{comic.Transcript}}
-  </p>
-  <p>
-    {{comic.OriginalPrintDate | date}}
-  </p>
-
-  <tags-input ng-model="comic.emotionTags" ng-keydown="tagEmotion($event)"></tags-input>
-
-  <button type="button" name="editComic" ng-click="editComic()">Edit This Comic</button>
-
-  <button type="button" name="nextComic" ng-click="getNextComic()">Get Next Comic</button>
-  <button type="button" name="previousComic" ng-click="getPreviousComic()">Get Previous Comic</button>
-
-  <label for="Comments">Comments</label>
-  <div ng-repeat="comment in comic.Comments">
-    <p>
-      {{comment.Reader.Username}}
-      {{comment.Comment}}
-    </p>
+<div class="container">
+  <div class="userWelcome row">
+    <h3 class="col-md-offset-8 col-md-4">Hi {{user.firstName}}!</h3>
   </div>
-  <input type="textarea" name="newComment" placeholder="Add a Comment" ng-model="comic.newComment"/>
-  <button type="button" name="postComment" ng-click="postComment()">Add Comment</button>
+
+  <div class="searchField row">
+    <input class="col-md-offset-4 col-md-4" type="text" name="searchString" ng-model="searchString" placeholder="Search for tags" ng-keydown="searchComic()">
+    <div class="col-md-4"></div>
+  </div>
+
+  <div class="row">
+    <div class="row">
+      <div class="col-md-1">
+        <button type="button" name="previousComic" ng-click="getPreviousComic()">
+          <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+        </button>
+      </div>
+      <img class="comicStripImage col-md-10" src={{comic.Image}} alt="comic image"/>
+      <div class="col-md-1">
+        <button type="button" name="nextComic" ng-click="getNextComic()">
+          <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <h4>Originally printed on: {{comic.OriginalPrintDate | date}}</h4>
+    </div>
+  </div>
+
+  <div>
+    <tags-input ng-model="comic.emotionTags" ng-keydown="tagEmotion($event)"></tags-input>
+    <button type="button" name="editComic" ng-click="editComic()" ng-show="user.Email == 'mncross@gmail.com'">Edit This Comic</button>
+  </div>
+
+  <div class="row">
+    <h3>Comments</h3>
+    <div ng-repeat="comment in comic.Comments">
+      <div class="row">
+        <p>{{comment.Reader.Username}}</p>
+        <p>{{comment.Comment}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <textarea class="col-md-12" name="newComment" rows="3" cols="80" placeholder="Add a Comment" ng-model="comic.newComment"></textarea>
+      <button type="button" name="postComment" ng-click="postComment()">Save Comment</button>
+    </div>
+  </div>
 </div>

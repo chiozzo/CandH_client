@@ -65,8 +65,10 @@ app.controller('ReadComicController', [
     };
 
     $scope.searchComic = function() {
-      $scope.getComic();
-      $scope.searchString = null;
+      if (event.keyCode == 13) {
+        $scope.getComic();
+        $scope.searchString = null;
+      }
     };
 
     $scope.editComic = function() {
@@ -75,9 +77,6 @@ app.controller('ReadComicController', [
 
     $scope.tagEmotion = function(event) {
       if (event.keyCode == 13) {
-        console.log(event);
-        console.log("tag emotion run");
-        // put will go here
         let comicID = $scope.comic.ComicStripId;
         console.log($scope.comic.emotionTags);
         let latestTagIndex = $scope.comic.emotionTags.length - 1;
@@ -99,8 +98,6 @@ app.controller('ReadComicController', [
     };
 
     $scope.postComment = function() {
-      console.log('post comment run', $scope.comic.newComment);
-
       $http({
         url: 'http://localhost:5000/api/Comment',
         method: 'POST',
@@ -126,7 +123,6 @@ app.controller('ReadComicController', [
     };
 
     $scope.getLoggedInUser = function() {
-
       $scope.user.firstName = userFactory.getUser().Username.split(' ')[0];
     };
 
