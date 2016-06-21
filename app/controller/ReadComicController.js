@@ -45,19 +45,25 @@ app.controller('ReadComicController', [
     };
 
     $scope.getNextComic = function() {
-      if ($scope.requestedComic.Id == null) {
-        $scope.requestedComic.Id = 1;
+      if (comicFactory.getRequestedComic().Id == null) {
+        comicFactory.setRequestedComicID(1);
       }
-      $scope.requestedComic.Id++;
+      comicFactory.setRequestedComicID(comicFactory.getRequestedComic().Id + 1);
+      console.log(comicFactory.getRequestedComic().Id);
       $scope.getComic();
     };
 
     $scope.getPreviousComic = function() {
-      if ($scope.requestedComic.Id <= 2) {
-        $scope.requestedComic.Id = 2;
+      if (comicFactory.getRequestedComic().Id <= 2) {
+        comicFactory.setRequestedComicID(2);
       }
-      $scope.requestedComic.Id--;
+      comicFactory.setRequestedComicID(comicFactory.getRequestedComic().Id - 1);
       $scope.getComic();
+    };
+
+    $scope.searchComic = function() {
+      $scope.getComic();
+      $scope.searchString = null;
     };
 
     $scope.editComic = function() {

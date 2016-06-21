@@ -1,8 +1,9 @@
 app.controller('EditComicController', [
   '$http',
   '$scope',
+  '$location',
   'ComicFactory',
-  function($http, $scope, comicFactory) {
+  function($http, $scope, $location, comicFactory) {
     $scope.comicToEdit = comicFactory.getComic();
     $scope.comicToEdit.OriginalPrintDate = new Date($scope.comicToEdit.OriginalPrintDate);
 
@@ -34,7 +35,10 @@ app.controller('EditComicController', [
         })
       })
       .then(
-        editedComic => console.log('Modified', editedComic),
+        editedComic => {
+          console.log('Modified', editedComic);
+          $location.path('/');
+        },
         error => console.log(error)
       );
     };
