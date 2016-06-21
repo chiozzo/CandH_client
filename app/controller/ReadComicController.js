@@ -58,10 +58,24 @@ app.controller('ReadComicController', [
       if (event.keyCode == 13) {
         console.log(event);
         console.log("tag emotion run");
-        for (var index in $scope.comic.emotionTags) {
-          // put will go here
-          console.log($scope.comic.emotionTags[index].text);
-        }
+        // put will go here
+        let comicID = $scope.comic.ComicStripId;
+        console.log($scope.comic.emotionTags);
+        let latestTagIndex = $scope.comic.emotionTags.length - 1;
+        console.log(latestTagIndex);
+        let emotion = $scope.comic.emotionTags[latestTagIndex].text;
+        $http({
+          url: `http://localhost:5000/api/Emotion`,
+          method: 'POST',
+          data: JSON.stringify({
+                  'ComicStripId': $scope.comic.ComicStripId,
+                  'ComicUserId': 1, // hard coding me as the only user. need to check for logged in user in the future.
+                  'Emotion': emotion
+                })
+        }).then(
+          success => console.log(success),
+          error => console.log(error)
+        );
       }
     };
 
