@@ -110,6 +110,10 @@ app.controller('ReadComicController', [
       .then(
         success => {
           console.log(success);
+          success.data.Reader = {};
+          success.data.Reader.Username = userFactory.getUser().Username;
+          $scope.comic.Comments.push(success.data)
+          $scope.comic.newComment = null;
         },
         error => {
           console.log(error);

@@ -11,6 +11,7 @@ app.factory('UserFactory', [
       },
       setUser(user) {
         currentUser = user;
+        console.log('currentUser', currentUser);
       }
     }
 }]);

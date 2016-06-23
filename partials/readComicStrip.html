@@ -1,48 +1,50 @@
-<div class="container">
-  <div class="userWelcome row">
-    <h3 class="col-md-offset-8 col-md-4">Hi {{user.firstName}}!</h3>
-  </div>
-
-  <div class="searchField row">
-    <input class="col-md-offset-4 col-md-4" type="text" name="searchString" ng-model="searchString" placeholder="Search for tags" ng-keydown="searchComic()">
-    <div class="col-md-4"></div>
-  </div>
-
-  <div class="row">
+<div class="readerContainer">
+  <div class="container">
     <div class="row">
-      <div class="col-md-1">
-        <button type="button" name="previousComic" ng-click="getPreviousComic()">
-          <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-        </button>
-      </div>
-      <img class="comicStripImage col-md-10" src={{comic.Image}} alt="comic image"/>
-      <div class="col-md-1">
-        <button type="button" name="nextComic" ng-click="getNextComic()">
-          <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-        </button>
-      </div>
+      <h1 class="pageTitle text-center col-md-12">Hi {{user.firstName}}! Read more Calvin and Hobbes!</h1>
     </div>
+
+    <div class="searchField row">
+      <input class="col-md-offset-4 col-md-4" type="text" name="searchString" ng-model="searchString" placeholder="Search for tags" ng-keydown="searchComic()">
+      <div class="col-md-4"></div>
+    </div>
+
     <div class="row">
-      <h4>Originally printed on: {{comic.OriginalPrintDate | date}}</h4>
-    </div>
-  </div>
-
-  <div>
-    <tags-input ng-model="comic.emotionTags" ng-keydown="tagEmotion($event)"></tags-input>
-    <button type="button" name="editComic" ng-click="editComic()" ng-show="user.Email == 'mncross@gmail.com'">Edit This Comic</button>
-  </div>
-
-  <div class="row">
-    <h3>Comments</h3>
-    <div ng-repeat="comment in comic.Comments">
       <div class="row">
-        <p>{{comment.Reader.Username}}</p>
-        <p>{{comment.Comment}}</p>
+        <div class="col-md-1 bingeButtonContainer">
+          <button class="bingeButton btn btn-warning" type="button" name="previousComic" ng-click="getPreviousComic()">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+          </button>
+        </div>
+        <img class="comicStripImage col-md-10" src={{comic.Image}} alt="comic image"/>
+        <div class="col-md-1 bingeButtonContainer">
+          <button class="bingeButton btn btn-warning" type="button" name="nextComic" ng-click="getNextComic()">
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="printedDate">Originally printed on: {{comic.OriginalPrintDate | date}}</h4>
       </div>
     </div>
-    <div class="row">
-      <textarea class="col-md-12" name="newComment" rows="3" cols="80" placeholder="Add a Comment" ng-model="comic.newComment"></textarea>
-      <button type="button" name="postComment" ng-click="postComment()">Save Comment</button>
+
+    <div>
+      <tags-input ng-model="comic.emotionTags" ng-keydown="tagEmotion($event)"></tags-input>
+      <button type="button" name="editComic" ng-click="editComic()" ng-show="user.Email == 'mncross@gmail.com'">Edit This Comic</button>
+    </div>
+
+    <div class="row commentsArea">
+      <span class="commentsLabel">Comments</span>
+      <div ng-repeat="comment in comic.Comments" class="commentContainer">
+        <div class="row commentText">
+          <p class="commentUser">{{comment.Reader.Username}} says</p>
+          <p class="commentBody">{{comment.Comment}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <textarea class="col-md-12 newComment" name="newComment" rows="3" cols="80" placeholder="Add a Comment" ng-model="comic.newComment"></textarea>
+        <button type="button" class="postComment btn btn-default" name="postComment" ng-click="postComment()">Save Comment</button>
+      </div>
     </div>
   </div>
 </div>
