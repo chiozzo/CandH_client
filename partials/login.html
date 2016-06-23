@@ -1,9 +1,13 @@
-<div class="login">
-  <label for="Name">Name</label>
-  <input type="text" name="Name" ng-model="user.Username">
-
-  <label for="Email">Email</label>
-  <input type="text" name="Email" ng-model="user.Email">
-
-  <button type="button" name="login" ng-click="loginUser()">Login</button>
+<div class="welcome">
+  <div class="login row">
+    <div class="col-md-12 login-name">
+      <label class="text-center" for="Name">Name</label>
+      <input type="text" name="Name" ng-model="user.Username">
+    </div>
+    <div class="col-md-12 login-email">
+      <label class="center-block" for="Email">Email</label>
+      <input type="text" name="Email" ng-model="user.Email">
+    </div>
+    <button class="text-center" type="button" name="login" ng-click="loginUser()">Login</button>
+  </div>
 </div>

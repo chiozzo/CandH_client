@@ -1,3 +1,145 @@
+@font-face {
+  font-family: 'Calvin';
+  src: url('fonts\\calvin_and_hobbes_font\\CALVINN.TTF');
+}
+
+@font-face {
+  font-family: 'Comic-Book-Italic';
+  src: url('fonts\\comic_book\\Comic Book Italic.otf');
+}
+
+.welcome {
+  background: url('img\\login_background.jpg') no-repeat center center fixed;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  min-height: 1080px;
+  position: relative;
+  font-family: 'Comic-Book-Italic';
+}
+
+.login {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+
+  position: absolute;
+  top: 40%;
+  left: 40%;
+
+  margin: -70px 0 0 -170px;
+
+  font-size: 40px;
+}
+
+.login button {
+  margin: 0.5em;
+  left: 50%;
+}
+
+.readerContainer {
+  position: relative;
+  background: #FFB732 no-repeat center center fixed;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  min-height: 1080px;
+  position: relative;
+}
+
+.readerContainerChild {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+
+  position: absolute;
+  top: 40%;
+  left: 40%;
+
+  margin: -70px 0 0 -170px;
+}
+
+.commentsLabel, .printedDate, .pageTitle {
+  font-family: 'Calvin';
+}
+
+.pageTitle {
+  font-size: 4em;
+}
+
+.searchField {
+  margin: 2em;
+}
+
+.bingeButtonContainer {
+  position: relative;
+}
+
+.bingeButton {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+
+  border: 2px solid black;
+  background-color: darkorange;
+  border-radius: 10px;
+  height: 15em;
+  margin-top: 3.5em;
+}
+
 .comicStripImage {
   width: 80%;
+  /*border-radius: 30px;*/
+}
+
+.tag-item {
+  background-color: black;
+  color: white;
+}
+
+.commentsLabel {
+  font-size: 4em;
+}
+
+.commentsArea {
+  padding: 20px;
+  margin: 2em;
+}
+
+.commentContainer {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2em;
+}
+
+.commentText {
+  padding: 10px;
+}
+
+.commentsArea .commentContainer:nth-child(even) {
+  background-color: #e5e5e5;
+}
+
+.commentsArea .commentContainer:nth-child(odd) {
+  background-color: #ffffff
+}
+
+.commentUser {
+  font-size: 12px;
+}
+
+.commentBody {
+  font-size: 18px;
+}
+
+.newComment {
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.postComment {
+  margin: 1em;
 }
