@@ -71,6 +71,8 @@
 
 .searchField {
   margin: 2em;
+  font-family: 'Comic-Book-Italic';
+  font-size: 18px;
 }
 
 .bingeButtonContainer {
@@ -97,6 +99,13 @@
 .tag-item {
   background-color: black;
   color: white;
+  font-family: 'Comic-Book-Italic';
+  font-size: 18px;
+}
+
+.input {
+  font-family: 'Comic-Book-Italic';
+  font-size: 18px;
 }
 
 .commentsLabel {
@@ -106,6 +115,7 @@
 .commentsArea {
   padding: 20px;
   margin: 2em;
+  font-family: 'Comic-Book-Italic';
 }
 
 .commentContainer {
@@ -128,11 +138,11 @@
 }
 
 .commentUser {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .commentBody {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .newComment {
